@@ -25,6 +25,23 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Automatically place the hamburger icon inside your existing header
             if (toggleBtn) headerInner.insertBefore(toggleBtn, headerInner.firstChild);
 
+            // Fix relative paths using BASE_URL before attaching to document
+            if (sidebarMenu) {
+                sidebarMenu.querySelectorAll('a').forEach(a => {
+                    const href = a.getAttribute('href');
+                    if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('javascript:')) {
+                        a.setAttribute('href', window.BASE_URL + href);
+                    }
+                });
+                
+                sidebarMenu.querySelectorAll('img').forEach(img => {
+                    const src = img.getAttribute('src');
+                    if (src && !src.startsWith('http') && !src.startsWith('data:')) {
+                        img.setAttribute('src', window.BASE_URL + src);
+                    }
+                });
+            }
+
             // 2. Safely attach layout overlay screens directly to the active document body container
             if (sidebarMenu) document.body.appendChild(sidebarMenu);
             if (backdropVeil) document.body.appendChild(backdropVeil);
@@ -70,11 +87,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Automatically highlights the tab link matches corresponding to the window browser path URL location
     function highlightCurrentMobilePage() {
-        const currentPath = window.location.pathname.split("/").pop() || window.BASE_URL + 'index.html';
+        let currentUrl = window.location.href.split('?')[0].split('#')[0];
+        if (currentUrl.endsWith('index.html')) {
+            currentUrl = currentUrl.replace('index.html', '');
+        }
+        
         const mobileLinks = document.querySelectorAll('.sidebar-nav a');
         
         mobileLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPath) {
+            let linkUrl = link.href.split('?')[0].split('#')[0];
+            if (linkUrl.endsWith('index.html')) {
+                linkUrl = linkUrl.replace('index.html', '');
+            }
+            
+            if (linkUrl === currentUrl) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
