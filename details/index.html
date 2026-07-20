@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nimanja Petshop</title>
+  <script>window.BASE_URL = "../";</script>
+  <script>window.resolveImg = function(url) { if(!url) return ''; url = url.replace(/\\/g, '/'); if(url.startsWith('http') || url.startsWith('//') || url.startsWith('data:')) return url; return window.BASE_URL + url; };</script>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="../styles-improved.css" />
+    <link rel="stylesheet" href="../search.css" />
+    <link rel="stylesheet" href="../products-improved.css" />
+    <link rel="stylesheet" href="../details.css" />
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+</head>
+<body>
+    <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="../index.html">
+        <img src="../images/Logo-01.png" alt="PawNinja Logo" class="logo-img">
+      </a>
+
+      <nav class="main-nav">
+        <a href="../index.html">HOME</a>
+        <a href="../product/index.html" class="active" >PRODUCTS</a>
+        <a href="../our_store/index.html">OUR STORE</a>
+        <a href="../brands/index.html">BRANDS</a>
+        <a href="../contact/index.html">CONTACT</a>
+        <a href="../about_us/index.html">ABOUT US</a>
+        <a href="../order_list/index.html" class="cart-nav-link" style="display:flex; align-items:center; gap:5px;">🛒 ORDER LIST <span class="cart-badge" style="display:none; background:var(--orange); color:white; border-radius:50%; padding:2px 6px; font-size:12px; font-weight:bold;">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+    <div class="details-layout">
+        
+        <div class="filter-search details-page-wide-search">
+            <form id="home-search-form" style="width: 100%; display: flex; gap: 10px; margin: 0;">
+                <input type="text" id="home-search-input" placeholder="Search products..." autocomplete="off" />
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+            <div id="search-results-dropdown" class="search-dropdown-wrapper"></div>
+        </div>
+
+        <a href="#" onclick="window.history.back(); return false;" class="back-link">← Back</a>
+        
+        <div id="product-detail-view" class="main-content"></div>
+
+        <div id="additional-info-card" class="info-card-container"></div>
+
+        <div class="similar-section">
+            <h2>Similar Products</h2>
+            <div id="similar-products-grid" class="similar-grid"></div>
+        </div>
+    </div>
+
+      <footer>
+    <div class="container footer-inner">
+      <div>
+        <a class="logo footer-logo" href="#">
+          <img src="../images/Logo-01.png" alt="Nimanja" style="height: 40px; margin-bottom: 10px;">
+        </a>
+        <p>A warm and playful pet shop for dogs, cats, and the people who love them.</p>
+      </div>
+      <div>
+        <h3>Shop</h3>
+        <a href="../product/index.html">All Products</a>
+        <a href="../product/index.html?category=Cat Food">Cat Food</a>
+        <a href="../product/index.html?category=Dog Food">Dog Food</a>
+        <a href="../product/index.html?category=Treats">Treats</a>
+        <a href="../product/index.html?category=Cage">Cage</a>
+      </div>
+      <div>
+        <h3>Visit Us</h3>
+        <a href="../our_store/index.html">Nimanja Stores</a>
+        <a href="../contact/index.html">Contact</a>
+      </div>
+
+      <!-- New Social Media Column Stack -->
+      <div>
+        <h3>Follow our social media</h3>
+        <div class="footer-social-list">
+          <a href="https://www.facebook.com/nimanjamalaysia/?locale=ms_MY" class="social-link-item">
+            <img src="../images/social meadia icon/fb.png" alt="Facebook" class="social-img-icon">
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/nimanjamalaysia/?hl=en" class="social-link-item">
+            <img src="../images/social meadia icon/ig.png" alt="Instagram" class="social-img-icon">
+            <span>Instagram</span>
+          </a>
+          <a href="#" class="social-link-item">
+            <img src="../images/social meadia icon/tt.png" alt="TikTok" class="social-img-icon">
+            <span>TikTok</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>©2026 Nimanja Malaysia Petshop</p>
+    </div>
+  </footer>
+
+    <script type="module" src="../js/home-search.js"></script>
+    <script type="module" src="../js/details.js"></script>
+  <script src="../js/global-sidebar.js"></script>
+  <script type="module" src="../js/analytics.js"></script>
+
+  <script src="../js/cart.js"></script>
+</body>
+</html>
